@@ -1,0 +1,18 @@
+SELECT
+date,
+	count(*),
+	sum(num),
+	from_unixtime(date)
+FROM
+	(
+		SELECT
+			num,
+			date
+		FROM
+			simple_online_douyu
+		GROUP BY
+			uid,
+			date
+	) a
+GROUP BY
+	date;
